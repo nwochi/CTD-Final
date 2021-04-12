@@ -1,0 +1,29 @@
+<!--<h1>< %= @dance.title %></h1>-->
+<h1>
+    <strong>Title:</strong>
+    <%= @dance.title %>
+</h1>
+
+<p>
+    <strong>Description:</strong>
+    <%= @dance.description %>
+</p>
+
+<!--<div id="moves">-->
+<p>
+    <h2>Phrases in Your Dance</h2>
+    <% @dance.dance_to_phrases.order(:position).each do |t| %>
+        <%= t.position.to_s + ": " + t.phrase_id.to_s %> <br>
+    <% end %>
+</p>
+    
+
+<div>
+    <%= link_to 'Edit', edit_dance_path(@dance) %> |
+    <%= link_to 'Back', dances_path %>
+</div>
+
+<!--< %= form_with(url: movie_path(@movie), method: :get, local: true) do |form| %>-->
+<!--    < %= form.select :order, ["Ratings High to Low", "Ratings Low to High"] %>-->
+<!--    < %= form.submit "Sort" %>-->
+<!--< % end%>-->

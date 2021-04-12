@@ -1,0 +1,43 @@
+<!--< %= @dance.title %>-->
+
+<!--<h2>Phrases in Your Dance</h2>-->
+<!--    < % @dance.phrase.order(:position).each do |t| %>-->
+<!--        < %= t.position.to_s + ": " + t.name %> <br>-->
+<!--    < % end %>-->
+    
+<%= form_for(@dance) do |f| %>
+    <div class="field">
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+    </div>
+    
+    <div class="field">
+        <%= f.label :phrase_name %>
+        <%= f.text_field :phrase_name, value: "" %>
+    </div>
+    
+    <div class="field">
+        <%= f.label :position %>
+        <%= f.number_field :position, value: 1 %>
+    </div>
+    
+    <div>
+        <%= f.submit %>
+    </div>
+    
+    <% end %>
+    
+<!--    < %= form_for(customer) do |f| %>-->
+<!--  < % if customer.errors.any? %>-->
+<!--    <div id="error_explanation">-->
+<!--      <h2>< %= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>-->
+
+<!--      <ul>-->
+<!--      < % customer.errors.full_messages.each do |message| %>-->
+<!--        <li>< %= message %></li>-->
+<!--      < % end %>-->
+<!--      </ul>-->
+<!--    </div>-->
+<!--  < % end %>-->
+
+<!--< % end %>-->

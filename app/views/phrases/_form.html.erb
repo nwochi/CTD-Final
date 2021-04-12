@@ -1,0 +1,29 @@
+
+<!--< %= @phrase.name %>-->
+
+<!--<h2>Moves in Your Phrase</h2>-->
+<!--    < % @phrase.moves.order(:position).each do |t| %>-->
+<!--        < %= t.position.to_s + ": " + t.name %> <br>-->
+<!--    < % end %>-->
+    
+<%= form_for(@phrase) do |f| %>
+    <div class="field">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+    </div>
+    
+    <div class="field">
+        <%= f.label :move_name %>
+        <%= f.text_field :move_name, value: "" %>
+    </div>
+    
+    <div class="field">
+        <%= f.label :position %>
+        <%= f.number_field :position, value: 1 %>
+    </div>
+    
+    <div>
+        <%= f.submit %>
+    </div>
+    
+    <% end %>

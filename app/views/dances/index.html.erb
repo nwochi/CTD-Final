@@ -1,0 +1,38 @@
+<!--<h1>My Dances</h1>-->
+<!--    < % @dances.each do |phrase| % >-->
+<!--    <p> < % = link_to dance.title, dance_path(dance) % ></p>-->
+    <!--...name, "/phrases/#{phrase.id}"-->
+<!--    < % end % >-->
+    
+<p id="notice"><%= notice %></p>
+
+<h1>My Dances</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <!--<th>Email</th>-->
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dance.each do |dance| %>
+      <tr>
+        <td><%= dance.title %></td>
+        <td><%= dance.description %></td>
+        <!--<td>< %= dance.dance_to_phrases %></td>-->
+        <!--<td>< %= dance.dance_to_phrases.phrases %></td>-->
+        <td><%= link_to 'Show', dance %></td>
+        <td><%= link_to 'Edit', edit_dance_path(dance) %></td>
+        <td><%= link_to 'Destroy', dance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dance', new_dance_path %>
