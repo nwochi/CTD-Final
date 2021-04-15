@@ -18,9 +18,9 @@ class DancesController < ApplicationController
         if @dance.save
             flash.notice = "Your new dance record was created successfully!"
             redirect_to @dance
-        else
-            flash.now.alert = @dance.errors.full_messages.to_sentence
-            render :new
+        # else
+        #     flash.now.alert = @dance.errors.full_messages.to_sentence
+        #     render :new
         end
      end
     
@@ -31,6 +31,7 @@ class DancesController < ApplicationController
      def update
         @dance = Dance.find(params[:id])
         @dance.update(dance_params)
+        redirect_to @dance
         # if @dance.dance_to_phrases.update(phrase: dance_params[:phrase_name], position: dance_params[:position])
         # # @dance.title(title: dance_params[:phrase_name], position: dance_params[:position])
         # #params.require(:dance).permit(:title, :description)

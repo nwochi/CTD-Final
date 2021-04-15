@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :phrases
   resources :dances
+  resources :moves
   # edit_move '/moves', to: 'moves#edit' #new line that I am not sure about
   # create_move 'moves', to: 'moves#create' #new line that I am not sure about
   # get '/phrases', to: 'phrases#index'
