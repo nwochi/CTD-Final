@@ -14,16 +14,22 @@
         <% @phrases.each do |phrase| %>
             <tr>
                 <td><%= phrase.name %></td>
+                <!--<td>< %= link_to 'Create', create_phrase_path(phrase) %> |</td>-->
                 <td><%= link_to 'Show', phrase %> |</td>
                 <td><%= link_to 'Edit', edit_phrase_path(phrase) %> |</td>
                 <td><%= link_to 'Destroy', phrase, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
         <% end %>
+        
     </tbody>
     
 </table>
 
 <br>
+<div>
+    <%= link_to 'Home', root_path %> |
+    <%= link_to 'New Phrase', new_phrase_path %>
+</div>
 
 <!--< %= link_to 'New Phrase', new_phrase_path %>-->
 <!--    < % @phrases.each do |phrase| %>-->

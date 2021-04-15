@@ -16,8 +16,9 @@ class PhrasesController < ApplicationController
     end
     
     def create
-        phrase_params = params.require(:phrase).permit(:name)
+        phrase_params = params.require(:phrase).permit(:name) #.require says that a specific parameter (a phrase) MUST be present; .permit returns an actual copy of the object
         @phrase = Phrase.new(phrase_params)
+        @phrase.moves.create #this is a new line
         if @phrase.save
             flash.notice = "Your new phrase record was created successfully!"
             redirect_to @phrase
@@ -33,11 +34,14 @@ class PhrasesController < ApplicationController
     
     def edit
         @phrase = Phrase.find(params[:id])
+        @phrase.update #this is a new line
+        @phrase.moves.create #new line
     end
     
     def update
         @phrase = Phrase.find(params[:id])
-        if @phrase.moves.update(name: phrase_params[:move_name], position: phrase_params[:position])
+        if @phrase.update(phrase_params)
+        # if @phrase.moves.update(name: phrase_params[:move_name], position: phrase_params[:position])
         
         #if @phrase.update(phrase_params)
             flash.notice = "Your phrase record was updated successfully!"
@@ -55,10 +59,13 @@ class PhrasesController < ApplicationController
     def destroy
         @phrase = Phrase.find(params[:id])
         @phrase.destroy
-        respond_to do |format|
-            format.html { redirect_to phrases_url, notice: 'Your phrase was successfully destroyed.' }
-            format.json { head :no_content }
-        end
+        @phrase.moves.delete(@move)
+        
+        
+        # respond_to do |format|
+        #     format.html { redirect_to phrases_url, notice: 'Your phrase was successfully destroyed.' }
+        #     format.json { head :no_content }
+        #end
         
         # @phrase = Phrase.find(params[:id])
         # @phrase.destroy

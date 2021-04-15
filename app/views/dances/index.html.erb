@@ -25,9 +25,10 @@
         <td><%= dance.description %></td>
         <!--<td>< %= dance.dance_to_phrases %></td>-->
         <!--<td>< %= dance.dance_to_phrases.phrases %></td>-->
+        <!--<td>< %= link_to 'Create', create_dance_path(dance) %></td>-->
         <td><%= link_to 'Show', dance %></td>
         <td><%= link_to 'Edit', edit_dance_path(dance) %></td>
-        <td><%= link_to 'Destroy', dance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', dance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -35,4 +36,7 @@
 
 <br>
 
+<div>
+<%= link_to 'Home', root_path %> |
 <%= link_to 'New Dance', new_dance_path %>
+</div>

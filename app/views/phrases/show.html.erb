@@ -9,6 +9,10 @@
 
 <div id="moves">
     <h2>Moves in Your Phrase</h2>
+    <% @phrase.moves each do |move| %>
+        <strong><%= move.name %></strong>
+        <%= move.position %>
+        
     <% @phrase.moves.order(:position).each do |t| %>
         <%= t.position.to_s + ": " + t.name %> <br>
     <% end %>
@@ -18,6 +22,7 @@
 
 <div>
     <%= link_to 'Edit', edit_phrase_path(@phrase) %> |
-    <%= link_to 'Back', phrases_path %>
+    <%= link_to 'Back', phrases_path %> |
+    <%= link_to 'Home', root_path %>
     <!--< %= link_to 'delete', @phrase, method: :delete %>-->
 </div>
