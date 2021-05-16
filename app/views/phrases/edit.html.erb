@@ -1,8 +1,9 @@
-<h1>Edit Your Phrase</h1>
-<%= render 'form', phrase:@phrase %>
+<h1>Edit Your Phrase Name</h1>
+<%= render 'form', phrase: @phrase %>
 
 <div>
-<%= link_to 'Back', phrases_path %> |
+<%= link_to 'Edit Moves', edit_moves_path(@phrase) %> |
+<%= link_to 'Back to My Phrases', phrases_path %> |
 <%= link_to 'Home', root_path %>
 </div>
 

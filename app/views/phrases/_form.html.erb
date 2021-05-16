@@ -6,21 +6,32 @@
 <!--        < %= t.position.to_s + ": " + t.name %> <br>-->
 <!--    < % end %>-->
     
-<%= form_for(@phrases) do |f| %>
+<%= form_for(phrase, method: :put) do |f| %>
+<% if phrase.errors.any? %>
+    <div>
+        <h2><%= pluralize(phrase.errors.count, "error") %> prohibited this phrase from being saved </h2>
+        <ul><% phrase.errors.full_messages.each do |msg| %>
+        <li>
+            <%= msg %>
+        </li>
+        <% end %>
+        </ul>
+    </div>
+<% end %>
     <div class="field">
         <%= f.label :name %>
         <%= f.text_field :name %>
     </div>
     
-    <div class="field">
-        <%= f.label :move_name %>
-        <%= f.text_field :move_name, value: "" %>
-    </div>
+    <!--<div class="field">-->
+    <!--    < %= f.label :move_name %>-->
+    <!--    < %= f.text_field :move_name, value: "" %>-->
+    <!--</div>-->
     
-    <div class="field">
-        <%= f.label :position %>
-        <%= f.number_field :position, value: 1 %>
-    </div>
+    <!--<div class="field">-->
+    <!--    < %= f.label :position %>-->
+    <!--    < %= f.number_field :position, value: 1 %>-->
+    <!--</div>-->
     
     <div>
         <%= f.submit %>

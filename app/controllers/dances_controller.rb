@@ -1,6 +1,6 @@
 class DancesController < ApplicationController
      def index
-        @dance = Dance.all
+        @dances = Dance.all
      end
     
      def show
@@ -44,6 +44,10 @@ class DancesController < ApplicationController
         # end
         # # @dance.update(dance_params)
         # # redirect_to @dance
+     end
+     
+     def add_phrase_name
+         params.require(:order).permit(:name, :position, :phrase_id)
      end
     
      def destroy

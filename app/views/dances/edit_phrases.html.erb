@@ -1,0 +1,41 @@
+<h1>Edit Phrases in Your Dance</h1>
+<h2> <%= @dance.title %> </h2>
+<tbody>
+    <%= @dance.phrase.order(:position).each do |phrase| %>
+        <tr>
+            <td><%= phrase.collection_select :phrase_id, Phrase.all, :id, :name, #include_blank: true %></td>
+            <!--<td>< %= phrase.name %></td>-->
+            <!--<td>< %= link_to 'Delete', edit_phrases_url, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+        </tr>
+    <% end %>
+</tbody>
+
+<!--< %= form_for(@phrase, url: add_move_path(@phrase), method: :post) do |f| %>-->
+    <!--<div class="field">-->
+    <!--    < %= f.label :name %>-->
+    <!--    < %= f.text_field :name %>-->
+    <!--</div>-->
+    
+<!--    <div class="field">-->
+<!--        < %= f.label :move_name %>-->
+<!--        < %= f.text_field :move_name, value: "" %>-->
+<!--    </div>-->
+    
+<!--    <div class="field">-->
+<!--        < %= f.label :position %>-->
+<!--        < %= f.number_field :position, value: 1 %>-->
+<!--    </div>-->
+    
+<!--    <div>-->
+<!--        < %= f.submit %>-->
+<!--    </div>-->
+    
+<!--    < % end %>-->
+    
+    
+<!--< %= render 'form', phrase:@phrase %>-->
+
+<div>
+<%= link_to 'Back', dances_path %> |
+<%= link_to 'Home', root_path %>
+</div>

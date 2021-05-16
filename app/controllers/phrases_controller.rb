@@ -7,17 +7,18 @@ class PhrasesController < ApplicationController
     end
     
     def show
-        @phrases = Phrase.find(params[:id])
+        @phrase = Phrase.find(params[:id])
+        # byebug
         # render text: @phrase.name
     end
     
     def new
-        @phrases = Phrase.new
+        @phrase = Phrase.new
     end
     
     def create
         phrase_params = params.require(:phrase).permit(:name) #.require says that a specific parameter (a phrase) MUST be present; .permit returns an actual copy of the object
-        @phrases = Phrase.new(phrase_params)
+        @phrase = Phrase.new(phrase_params)
     
         @phrase.moves #this is a new line
         if @phrase.save
@@ -35,15 +36,23 @@ class PhrasesController < ApplicationController
     # end
     
     def edit
-        @phrases = Phrase.find(params[:id])
+        @phrase = Phrase.find(params[:id])
         # @phrase.update #this is a new line
         # @phrase.moves.create #new line
     end
     
     def update
-        @phrases = Phrase.find(params[:id])
-        @phrases.update(name: phrase_params[:name]) #(phrase_params)
-        redirect_to @phrases
+        @phrase = Phrase.find(params[:id])
+        
+        if @phrase.update(phrase_params)
+        #@move = @phrases.moves.update(name: params[:move_name], position: params[:position])
+        #@article.update(title: params[:article][:title], description: params[:article][:description])
+  #redirect_to article_path(@article)
+        #@phrases.update(name: phrase_params[:name]) #(phrase_params)
+          redirect_to @phrase
+        else
+          render :edit
+        end
         # if @phrase.moves.update(name: phrase_params[:move_name], position: phrase_params[:position])
         
         #if @phrase.update(phrase_params)
@@ -59,17 +68,31 @@ class PhrasesController < ApplicationController
         # redirect_to @phrase
     end
     
-    def add_move
-        @phrase.moves.update(name: phrase_params[:move_name], position: phrase_params[:position])
+    def add_phrase_name
+         @phrase.create(name: phrase_params[:name])
+        redirect_to @phrase
     end
     
-    def destroy_move
-        @phrase.moves.delete(@move)
+    def add_move
+        @phrase = Phrase.find(params[:id])
+        @phrase.moves.create(name: phrase_params[:move_name], position: phrase_params[:position])
+        redirect_to "/phrases/1"
+    end
+    
+    def edit_moves
+        @phrase = Phrase.find(params[:id])
+    end
+    
+    def delete_move
+        @move = Move.find(params[:id])
+        @phrase = @move.phrase
+        @move.delete
+        redirect_to @phrase
     end
     
     def destroy
-        @phrases = Phrase.find(params[:id])
-        @phrases.destroy
+        @phrase = Phrase.find(params[:id])
+        @phrase.destroy
         # @phrases.moves.delete(@move)
         
         

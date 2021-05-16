@@ -14,7 +14,7 @@
         <% @phrases.moves.each do |move| %>
             <tr>
                 <td><%= phrase.move %></td>
-                <td><%= link_to 'Create', create_phrase_path(phrase) %> |</td>
+                <!--<td>< %= link_to 'Create', create_phrase_path(phrase) %> |</td>-->
                 <td><%= link_to 'Show', phrase.moves %> |</td>
                 <td><%= link_to 'Edit', edit_phrase.moves_path(phrase) %> |</td>
                 <td><%= link_to 'Delete', phrase.moves.delete(@move), method: :delete, data: { confirm: 'Are you sure?' } %></td>

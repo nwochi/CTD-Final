@@ -1,0 +1,46 @@
+<h1>Edit Moves in Your Phrase</h1>
+<h2> <%= @phrase.name %> </h2>
+
+<table>
+<tbody>
+    <% @phrase.moves.order(:position).each do |move| %>
+        <tr>
+            <td><%= move.position %></td>
+            <td><%= move.name %></td>
+            <td><%= link_to 'Delete', delete_move_path(move), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+</tbody>
+</table>
+
+<%= form_for(@phrase, url: add_move_path(@phrase), method: :post) do |f| %>
+    <!--<div class="field">-->
+    <!--    < %= f.label :name %>-->
+    <!--    < %= f.text_field :name %>-->
+    <!--</div>-->
+    
+    <div class="field">
+        <%= f.label :move_name %>
+        <%= f.text_field :move_name, value: "" %>
+    </div>
+    
+    <div class="field">
+        <%= f.label :position %>
+        <%= f.number_field :position, value: 1 %>
+    </div>
+    
+    <div>
+        <%= f.submit %>
+    </div>
+    
+    <% end %>
+    
+    
+<!--< %= render 'form', phrase:@phrase %>-->
+
+<div>
+<%= link_to 'Back to Moves in Your Phrase', @phrase %> |
+<%= link_to 'Back to My Phrases', phrases_path %> |
+<%= link_to 'Home', root_path %>
+</div>
+
