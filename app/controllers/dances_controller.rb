@@ -18,6 +18,9 @@ class DancesController < ApplicationController
         if @dance.save
             flash.notice = "Your new dance record was created successfully!"
             redirect_to @dance
+        else
+            flash.notice = "Something is wrong with your dance; please try again."
+            render :new
         # else
         #     flash.now.alert = @dance.errors.full_messages.to_sentence
         #     render :new

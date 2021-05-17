@@ -24,6 +24,9 @@ class PhrasesController < ApplicationController
         if @phrase.save
             flash.notice = "Your new phrase record was created successfully!"
             redirect_to @phrase
+        else
+            flash.notice = "Something is wrong with your phrase; please try again."
+            render :new
         end
     end
         # # else
