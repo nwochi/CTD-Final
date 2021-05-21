@@ -1,13 +1,14 @@
 <h1>Edit Phrases in Your Dance</h1>
 <h2> <%= @dance.title %> </h2>
 <tbody>
-    <%= @dance.phrase.order(:position).each do |phrase| %>
-        <tr>
-            <td><%= phrase.collection_select :phrase_id, Phrase.all, :id, :name, #include_blank: true %></td>
+    <!--< %= @dance.phrase.order(:position).each do |phrase| %>-->
+        <!--<tr>-->
+    <%= render 'form', dance: @dance %>
+            <!--<td> < %= phrase.collection_select :phrase_id, Phrase.all, :id, :name, include_blank: true %></td>-->
             <!--<td>< %= phrase.name %></td>-->
             <!--<td>< %= link_to 'Delete', edit_phrases_url, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
-        </tr>
-    <% end %>
+        <!--</tr>-->
+    <!--< % end %>-->
 </tbody>
 
 <!--< %= form_for(@phrase, url: add_move_path(@phrase), method: :post) do |f| %>-->

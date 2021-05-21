@@ -2,6 +2,8 @@ class Dance < ApplicationRecord
     has_many :dance_to_phrases, -> {order(position: :asc)}
     has_many :phrases, through: :dance_to_phrases
     
+    validates :title, presence: true
+    validates :description, presence: true, length: { minimum: 5 }
     # def phrases_in_order
     #     self.phrases.sort_by do |phrase|
     #     phrase.name

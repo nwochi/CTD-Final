@@ -1,26 +1,28 @@
 <!--<h1>< %= @dance.title %></h1>-->
+<p id="notice"><%= notice %></p>
 <h1>
     <strong>Title:</strong>
     <%= @dance.title %>
 </h1>
 
-<p>
+<h2>
     <strong>Description:</strong>
     <%= @dance.description %>
-</p>
+</h2>
 
-<!--<div id="moves">-->
-<p>
-    <h2>Phrases in Your Dance</h2>
+<h2>Phrases in Your Dance</h2>
     <% @dance.dance_to_phrases.order(:position).each do |t| %>
-        <%= t.position.to_s + ": " + t.phrase_id.to_s %> <br>
+        <% if !t.position.nil? %>
+            <%= t.position.to_s + ": " + t.name #t.phrase_id.to_s %> <br>
+        <% end %>
     <% end %>
-</p>
+    
+
     
 
 <div>
     <%= link_to 'Edit Dance Name and Description', edit_dance_path(@dance) %> |
-    <%= link_to 'Edit Phrases', add_phrase_name(@dance) %> |
+    <%= link_to 'Edit Phrases', edit_phrases(@dance) %> |
     <%= link_to 'Back to My Dances', dances_path %> |
     <%= link_to 'Home', root_path %>
 </div>
