@@ -1,5 +1,47 @@
 <h1>Edit Your Dance Title and Description</h1>
-<%= render 'form', dance:@dance %> <br>
+
+<%= form_for(@dance, method: :put) do |f| %>
+<% if @dance.errors.any? %>
+    <div>
+        <h2><%= pluralize(phrase.errors.count, "error") %> prohibited this phrase from being saved </h2>
+        <ul><% phrase.errors.full_messages.each do |msg| %>
+        <li>
+            <%= msg %>
+        </li>
+        <% end %>
+        </ul>
+    </div>
+<% end %>
+    <div class="field">
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+    </div>
+    
+    <div class="field">
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+    </div>
+    
+    <div>
+        <%= link_to 'Edit Phrases in Your Dance', edit_phrases_path %>
+    </div>
+    
+    <!--<div class="field">-->
+    <!--    < %= f.label :move_name %>-->
+    <!--    < %= f.text_field :move_name, value: "" %>-->
+    <!--</div>-->
+    
+    <!--<div class="field">-->
+    <!--    < %= f.label :position %>-->
+    <!--    < %= f.number_field :position, value: 1 %>-->
+    <!--</div>-->
+    
+    <div>
+        <%= f.submit %>
+    </div>
+    
+    <% end %>
+<!--< %= render 'form', dance: @dance %> <br>-->
     <!--<div class="field">-->
     <!--    < %= f.label :description %>-->
     <!--    < %= f.text_field :description %>-->

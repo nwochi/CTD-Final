@@ -52,6 +52,10 @@ class DancesController < ApplicationController
      def add_phrase_name
          params.require(:order).permit(:name, :position, :phrase_id)
      end
+     
+     def edit_phrases_dance
+         @dance = Dance.find(params[:id])
+     end
     
      def destroy
         @dance = Dance.find(params[:id])
