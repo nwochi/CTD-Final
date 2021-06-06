@@ -50,7 +50,10 @@ class DancesController < ApplicationController
      end
      
      def add_phrase_name
-         params.require(:order).permit(:name, :position, :phrase_id)
+         @dance = Dance.find(params[:id])
+         @dance.phrases.create(name: dance_params[:phrase_name], position: dance_params[:position], phrase_id: dance_params[:phrase_id])
+         redirect_to "/dances/1"
+        #  params.require(:order).permit(:name, :position, :phrase_id)
      end
      
      def edit_phrases_dance
