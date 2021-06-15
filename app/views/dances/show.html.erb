@@ -13,21 +13,13 @@
 <h2>Phrases in Your Dance</h2>
     <% @dance.dance_to_phrases.order(:position).each do |t| %>
         <% if !t.position.nil? %>
-            <%= t.position.to_s + ": " + t.name #t.phrase_id.to_s %> <br>
+            <%= t.position.to_s + ": " + t.name %> <br>
         <% end %>
     <% end %>
     
-
     
-
-<div>
     <%= link_to 'Edit Dance Name and Description', edit_dance_path(@dance) %> |
     <%= link_to 'Edit Phrases', edit_phrases_path(@dance) %> |
     <%= link_to 'Back to My Dances', dances_path %> |
     <%= link_to 'Home', root_path %>
-</div>
 
-<!--< %= form_with(url: movie_path(@movie), method: :get, local: true) do |form| %>-->
-<!--    < %= form.select :order, ["Ratings High to Low", "Ratings Low to High"] %>-->
-<!--    < %= form.submit "Sort" %>-->
-<!--< % end%>-->

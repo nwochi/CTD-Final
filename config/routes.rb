@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   # root to: 'dances#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :phrases
+  
+  post '/dances/add_phrase_name/:id', to: 'dances#add_phrase_name', as: 'add_phrase_name'
+  get '/dances/edit_phrases/:id', to: 'dances#edit_phrases', as: 'edit_phrases'
   resources :dances
+  
   # get '/moves/:id/edit(.:format)'
   # get 'moves/create(.:format)'
   resources :moves
@@ -11,8 +15,7 @@ Rails.application.routes.draw do
   post '/phrases/add_move/:id', to: 'phrases#add_move', as: 'add_move'
   delete '/phrases/delete_move/:id', to: 'phrases#delete_move', as: 'delete_move'
   
-  get '/dances/edit_phrases/:id', to: 'dances#edit_phrases', as: 'edit_phrases'
-  post '/dances/add_phrase_name/:id', to: 'dances#add_phrase_name', as: 'add_phrase_name'
+  
   # resources :dance_to_phrases
   # put '/dances/edit_phrases/:id', to: 'dances#edit_phrases', as: 'edit_phrases'
   # edit_move '/moves', to: 'moves#edit' #new line that I am not sure about
