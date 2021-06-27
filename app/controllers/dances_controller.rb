@@ -1,4 +1,6 @@
 class DancesController < ApplicationController
+    rescue_from ActiveRecord::RecordNotFound, with: :catch_not_found
+        
      def index
         @dances = Dance.all
      end
@@ -33,8 +35,14 @@ class DancesController < ApplicationController
     
      def update
         @dance = Dance.find(params[:id])
-        @dance.update(dance_params)
-        redirect_to @dance
+        
+        if @dance.update(dance_params)
+            flash.notice = "Your dance was updated successfully!"
+            redirect_to @dance
+        else
+          flash.now.alert = @dance.errors.full_messages.to_sentence
+          render :edit
+        end
         # if @dance.dance_to_phrases.update(phrase: dance_params[:phrase_name], position: dance_params[:position])
         # # @dance.title(title: dance_params[:phrase_name], position: dance_params[:position])
         # #params.require(:dance).permit(:title, :description)
@@ -79,14 +87,10 @@ class DancesController < ApplicationController
          @dance = Dance.find(params[:id])
       end
     
-    #   def catch_not_found(e)
-    #     Rails.logger.debug("We had a not found exception.")
-    #     flash.alert = e.to_s
-    #     redirect_to dance_path
-    #   end
-    
-    # def set_page
-    #     @phrase = Page.find(params[:id])
-    # end
+    def catch_not_found(e)
+      Rails.logger.debug("We had a not found exception.")
+      flash.alert = e.to_s
+      redirect_to dance_path
+    end
 end
 

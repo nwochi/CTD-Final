@@ -2,11 +2,15 @@ Rails.application.routes.draw do
   root to: 'welcome#welcome'
   # root to: 'dances#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :phrases
+  resources :phrases do
+    resources :moves
+  end
   
   post '/dances/add_phrase_name/:id', to: 'dances#add_phrase_name', as: 'add_phrase_name'
   get '/dances/edit_phrases/:id', to: 'dances#edit_phrases', as: 'edit_phrases'
-  resources :dances
+  resources :dances do
+    resources :dance_to_phrases
+  end
   
   # get '/moves/:id/edit(.:format)'
   # get 'moves/create(.:format)'

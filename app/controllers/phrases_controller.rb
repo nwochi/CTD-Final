@@ -1,6 +1,7 @@
 class PhrasesController < ApplicationController
-    # rescue_from ActiveRecord::RecordNotFound, with: :catch_not_found
+    rescue_from ActiveRecord::RecordNotFound, with: :catch_not_found
     before_action :set_phrase, only: [:show, :edit, :update, :destroy]
+    # layout 'phrase_layout'
     
     def index
         @phrases = Phrase.all
@@ -48,12 +49,14 @@ class PhrasesController < ApplicationController
         @phrase = Phrase.find(params[:id])
         
         if @phrase.update(phrase_params)
+            flash.notice = "Your phrase was updated successfully!"
         #@move = @phrases.moves.update(name: params[:move_name], position: params[:position])
         #@article.update(title: params[:article][:title], description: params[:article][:description])
   #redirect_to article_path(@article)
         #@phrases.update(name: phrase_params[:name]) #(phrase_params)
-          redirect_to @phrase
+            redirect_to @phrase
         else
+          flash.now.alert = @phrase.errors.full_messages.to_sentence
           render :edit
         end
         # if @phrase.moves.update(name: phrase_params[:move_name], position: phrase_params[:position])
