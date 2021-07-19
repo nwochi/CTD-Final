@@ -1,9 +1,44 @@
-<h1>Edit Your Phrase Name</h1>
-<%= render 'form', phrase: @phrase %>
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <title>Edit Your Phrase Name</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        
+        <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
+    </head>
+    
+    <body>
+        <div class="jumbotron jumbotron-fluid bg-dark text-white">
+            <div class="container text-lg-center">
+                <h1 class="display-1"><strong>Edit Your Phrase Name: </strong><br><%= @phrase.name %></h1>
+            </div>
+        </div>
+        
+        <div>
+            <%= render 'form', phrase: @phrase %>
+        </div>
 
-<div>
-<%= link_to 'Edit Moves', edit_moves_path(@phrase) %> |
-<%= link_to 'Back to My Phrases', phrases_path %> |
-<%= link_to 'Home', root_path %>
-</div>
+        </div>
+            <div class="bg-image">
+                <img src="https://i.guim.co.uk/img/media/252b0c2c673a0b001a1e0a2373138d955dff790e/0_0_3800_2529/master/3800.jpg?width=620&quality=85&auto=format&fit=max&s=8d4b6d8216a317fd734144f4a3cfa3c9" class="w-100" alt="Getting Started" />
+                <div class="mask" style="background-color: rgba(0, 0, 0, 0.6)">
+                    <div class="d-flex justify-content-center align-items-center h-100">
+                        <!--<p>text</p>-->
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <div>
+            <nav class="navbar-expand-lg navbar-dark bg-dark fixed-bottom">
+                <%= link_to 'Edit Moves', edit_moves_path(@phrase) %> |
+                <%= link_to 'Back to My Phrases', phrases_path %> |
+                <%= link_to 'Home', root_path %>
+            </nav>
+        </div>
+
+</body>
+</html>
