@@ -1,19 +1,41 @@
-<h1>Edit Moves in Your Phrase</h1>
-<h2> <%= @phrase.name %> </h2>
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <title>Edit Moves in Your Phrase</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        
+        <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
+    </head>
+    
+    <body>
+        <p id="notice"><%= notice %></p>
+        <div class="jumbotron jumbotron-fluid bg-dark text-white">
+            <div class="container text-lg-center">
+                <h1 class="display-1"><strong>Edit Moves in Your Phrase</strong></h1>
+            </div>
+        </div>
+        
+        <div>
+            <h2> <%= @phrase.name %> </h2>
 
-<table>
-<tbody>
-    <% @phrase.moves.order(:position).each do |move| %>
-        <tr>
-            <td><%= move.position %></td>
-            <td><%= move.name %></td>
-            <td><%= link_to 'Delete', delete_move_path(move), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-    <% end %>
-</tbody>
-</table>
-
-<%= form_for(@phrase, url: add_move_path(@phrase), method: :post) do |f| %>
+            <table>
+            <tbody>
+                <% @phrase.moves.order(:position).each do |move| %>
+                    <tr>
+                        <td><%= move.position %></td>
+                        <td><%= move.name %></td>
+                        <td><%= link_to 'Delete', delete_move_path(move), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+            </table>
+        </div>
+        
+        <div>
+            <%= form_for(@phrase, url: add_move_path(@phrase), method: :post) do |f| %>
     <!--<div class="field">-->
     <!--    < %= f.label :name %>-->
     <!--    < %= f.text_field :name %>-->
@@ -34,13 +56,23 @@
     </div>
     
     <% end %>
-    
+    </div>
+    <div class="bg-image">
+        <img src="https://balletboard.com/wp-content/uploads/2016/08/Guide-to-Ballet.jpg" class="w-100" alt="Balletboard" />
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6)">
+            <div class="d-flex justify-content-center align-items-center h-100">
+                        <!--<p>text</p>-->
+            </div>
+        </div>
+    </div>
     
 <!--< %= render 'form', phrase:@phrase %>-->
 
 <div>
-<%= link_to 'Back to Moves in Your Phrase', @phrase %> |
-<%= link_to 'Back to My Phrases', phrases_path %> |
-<%= link_to 'Home', root_path %>
+    <nav class="navbar-expand-lg navbar-dark bg-dark fixed-bottom">
+        <%= link_to 'Back to Moves in Your Phrase', @phrase %> |
+        <%= link_to 'Back to My Phrases', phrases_path %> |
+        <%= link_to 'Home', root_path %>
+    </nav>
 </div>
 

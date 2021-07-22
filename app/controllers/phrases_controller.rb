@@ -82,7 +82,7 @@ class PhrasesController < ApplicationController
     def add_move
         @phrase = Phrase.find(params[:id])
         @phrase.moves.create(name: phrase_params[:move_name], position: phrase_params[:position])
-        redirect_to "/phrases/1"
+        redirect_to edit_moves_path(@phrase)
     end
     
     def edit_moves
