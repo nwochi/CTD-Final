@@ -1,16 +1,40 @@
-<h1>Edit Phrases in Your Dance</h1>
-
-<h2> <%= @dance.title %> </h2>
-<tbody>
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <title>Edit Phrases in Your Dance</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        
+        <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
+    </head>
+    
+    <body>
+        <p id="notice"><%= notice %></p>
+        <div class="jumbotron jumbotron-fluid bg-dark text-white">
+            <div class="container text-lg-center">
+                <h1 class="display-1"><strong>Edit Phrases in Your Dance</strong></h1>
+            </div>
+        </div>
+        
+        <div>
+            <!--<h2>< %= @dance.title %></h2>-->
+        </div>
+    
+        <div>        
+            <table>
+                <tbody>
     <!--< %= @dance.phrase.order(:position).each do |phrase| %>-->
         <!--<tr>-->
-    <%= render 'form', dance: @dance %>
+                    <%= render 'form', dance: @dance %>
             <!--<td> < %= phrase.collection_select :phrase_id, Phrase.all, :id, :name, include_blank: true %></td>-->
             <!--<td>< %= phrase.name %></td>-->
             <!--<td>< %= link_to 'Delete', edit_phrases_url, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
         <!--</tr>-->
     <!--< % end %>-->
-</tbody>
+                </tbody>
+            </table>
 
 <!--< %= form_for(@phrase, url: add_move_path(@phrase), method: :post) do |f| %>-->
     <!--<div class="field">-->
@@ -36,8 +60,23 @@
     
     
 <!--< %= render 'form', phrase:@phrase %>-->
-
-<div>
-<%= link_to 'Back', dances_path %> |
-<%= link_to 'Home', root_path %>
 </div>
+
+    <div class="bg-image">
+        <img src="https://static.wixstatic.com/media/a27d24_3f3f4cc237d641848ebc0390d57847e6~mv2.jpg/v1/fill/w_740,h_246,al_c,q_90/a27d24_3f3f4cc237d641848ebc0390d57847e6~mv2.webp" class="w-100" alt="The Ballet Academy" />
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6)">
+            <div class="d-flex justify-content-center align-items-center h-100">
+                        <!--<p>text</p>-->
+            </div>
+        </div>
+    </div>
+    
+<div>
+     <nav class="navbar-expand-lg navbar-dark bg-dark fixed-bottom">
+        <%= link_to 'Back', dances_path %> |
+        <%= link_to 'Home', root_path %>
+    </nav>
+</div>
+
+</body>
+</html>

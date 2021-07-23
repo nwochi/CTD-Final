@@ -10,6 +10,7 @@ put '/phrases', to: 'phrases#create', as: 'new'
   
   post '/dances/add_phrase_name/:id', to: 'dances#add_phrase_name', as: 'add_phrase_name'
   get '/dances/edit_phrases/:id', to: 'dances#edit_phrases', as: 'edit_phrases'
+  post '/dances/edit_phrases/1', to: 'dances#create',as: 'add'
   resources :dances do
     resources :dance_to_phrases
   end

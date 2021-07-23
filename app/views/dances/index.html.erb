@@ -3,40 +3,70 @@
 <!--    <p> < % = link_to dance.title, dance_path(dance) % ></p>-->
     <!--...name, "/phrases/#{phrase.id}"-->
 <!--    < % end % >-->
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <title>My Dances</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        
+        <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
+    </head>
     
-<p id="notice"><%= notice %></p>
+    <body>
+      <p id="notice"><%= notice %></p>
+      <div class="jumbotron jumbotron-fluid bg-dark text-white">
+          <div class="container text-lg-center">
+              <h1 class="display-1"><strong>My Dances</strong></h1>
+          </div>
+      </div>
+        
+      <div>
 
-<h1>My Dances</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
       <!--<th>Description:</th>-->
       <!--<th>Email</th>-->
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
 
-  <tbody>
-    <% @dances.each do |dance| %>
-      <tr>
-        <td><%= dance.title %></td>
+          <tbody>
+            <% @dances.each do |dance| %>
+              <tr>
+                <td><%= dance.title %></td>
         <!--<td>< %= dance.description %></td>-->
         <!--<td>< %= dance.dance_to_phrases %></td>-->
         <!--<td>< %= dance.dance_to_phrases.phrases %></td>-->
         <!--<td>< %= link_to 'Create', create_dance_path(dance) %></td>-->
-        <td><%= link_to 'Show', dance %></td>
-        <td><%= link_to 'Edit', edit_dance_path(dance) %></td>
-        <td><%= link_to 'Delete', dance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+                <td><%= link_to 'Show', dance %></td>
+                <td><%= link_to 'Edit', edit_dance_path(dance) %></td>
+                <td><%= link_to 'Delete', dance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="bg-image">
+            <img src="http://images.clipartpanda.com/dancer-jumping-silhouette-leap.jpg" class="w-100" alt="Clipart Panda" />
+            <div class="mask" style="background-color: rgba(0, 0, 0, 0.6)">
+                <div class="d-flex justify-content-center align-items-center h-100">
+                        <!--<p>text</p>-->
+                </div>
+            </div>
+        </div>
 
-<br>
 
-<div>
-<%= link_to 'Home', root_path %> |
-<%= link_to 'New Dance', new_dance_path %>
-</div>
+        <div>
+          <nav class="navbar-expand-lg navbar-dark bg-dark fixed-bottom">
+            <%= link_to 'Home', root_path %> |
+            <%= link_to 'New Dance', new_dance_path %>
+          </nav>
+        </div>
+    </body>
+    </html>

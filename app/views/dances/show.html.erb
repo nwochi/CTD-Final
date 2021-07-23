@@ -1,25 +1,57 @@
-<!--<h1>< %= @dance.title %></h1>-->
-<p id="notice"><%= notice %></p>
-<h1>
-    <strong>Title:</strong>
-    <%= @dance.title %>
-</h1>
-
-<h2>
-    <strong>Description:</strong>
-    <%= @dance.description %>
-</h2>
-
-<h2>Phrases in Your Dance</h2>
-    <% @dance.dance_to_phrases.order(:position).each do |t| %>
-        <% if !t.position.nil? %>
-            <%= t.position.to_s + ": " + t.name %> <br>
-        <% end %>
-    <% end %>
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <title>Title and Description</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        
+        <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
+    </head>
     
-    
-    <%= link_to 'Edit Dance Name and Description', edit_dance_path(@dance) %> |
-    <%= link_to 'Edit Phrases', edit_phrases_path(@dance) %> |
-    <%= link_to 'Back to My Dances', dances_path %> |
-    <%= link_to 'Home', root_path %>
+    <body>
+        <p id="notice"><%= notice %></p>
+        <div class="jumbotron jumbotron-fluid bg-dark text-white">
+            <div class="container text-lg-center">
+                <h1 class="display-1"><strong>Title:</strong><%= @dance.title %></h1>
+            </div>
+        </div>
+        
+        <div>
+            <h2><strong>Description:</strong></h2>
+                <%= @dance.description %>
+        </div>
+        
+        <div>
+            <h2><strong>Phrases in Your Dance:</strong></h2>
+                <% @dance.dance_to_phrases.order(:position).each do |t| %>
+                    <% if !t.position.nil? %>
+                        <%= t.position.to_s + ": " + t.name %> <br>
+                    <% end %>
+                <% end %>
+        </div>
+        
+        </div>
+            <div class="bg-image">
+                <img src="http://blogdailyherald.com/wp-content/uploads/2015/04/attitude-2.jpg" class="w-100" alt="Blog Daily Herald" />
+                <div class="mask" style="background-color: rgba(0, 0, 0, 0.6)">
+                    <div class="d-flex justify-content-center align-items-center h-100">
+                        <!--<p>text</p>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div>
+            <nav class="navbar-expand-lg navbar-dark bg-dark fixed-bottom">
+                <%= link_to 'Edit Dance Name and Description', edit_dance_path(@dance) %> |
+                <%= link_to 'Edit Phrases', edit_phrases_path(@dance) %> |
+                <%= link_to 'Back to My Dances', dances_path %> |
+                <%= link_to 'Home', root_path %>
+            </nav>
+        </div>
+        
+    </body>
+    </html>
 
